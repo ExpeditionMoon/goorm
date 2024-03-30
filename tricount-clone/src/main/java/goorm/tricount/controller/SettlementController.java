@@ -1,8 +1,11 @@
 package goorm.tricount.controller;
 
+import goorm.tricount.dto.BalanceResult;
+import goorm.tricount.dto.ExpenseResult;
 import goorm.tricount.dto.SettlementRequest;
 import goorm.tricount.model.ApiResponse;
 import goorm.tricount.model.Settlement;
+import goorm.tricount.service.ExpenseService;
 import goorm.tricount.service.SettlementService;
 import goorm.tricount.util.MemberContext;
 import jakarta.validation.Valid;
@@ -25,8 +28,21 @@ public class SettlementController {
 
     // 정산 참여
     @PostMapping("/{id}/join")
-    public ApiResponse joinSerrlement(@PathVariable("id") Long settlementId) {
+    public ApiResponse joinSettlement(@PathVariable("id") Long settlementId) {
         settlementService.joinSettlement(settlementId, MemberContext.getCurrentMember().getId());
         return new ApiResponse().ok();
     }
+
+    // 정산 결과 조회
+    @GetMapping("/{id}/balance")
+    public ApiResponse<BalanceResult> getSettlementResult(@PathVariable("id") Long settlementId) {
+        return new ApiResponse<BalanceResult>().ok(settlementService.getBalanceResult(settlementId));
+    }
+
+    // 특정 정산 조회
+    @GetMapping("/{id}/expenses")
+    public ApiResponse<ExpenseResult> findGetSettlement(@PathVariable("id") Long settlementId) {
+        return new ApiResponse<ExpenseResult>().ok(settlementService.getSettlementExpenses(settlementId));
+    }
+
 }
