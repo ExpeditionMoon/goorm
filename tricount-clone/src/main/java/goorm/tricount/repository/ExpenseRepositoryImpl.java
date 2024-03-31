@@ -61,7 +61,7 @@ public class ExpenseRepositoryImpl implements ExpenseRepository {
                 member.setPassword(rs.getString("member.password"));
                 member.setName(rs.getString("member.name"));
 
-                expenseResult.setPayerMemberId(member);
+                expenseResult.setPayerMember(member);
             }
             return expenseResult;
         });

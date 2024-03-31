@@ -134,7 +134,7 @@ public class SettlementService {
         // 정산 불가능 금액 = 총합 - 평균 * 모수
         BigDecimal impossibleAmount = totalAmount.subtract(averageAmount.multiply(BigDecimal.valueOf(totalMember)));
 
-        // TODO 정산 불간으 금액 로직 처리 필요(일단 로그 남김)
+        // TODO 정산 불가능 금액 로직 처리 필요(일단 로그 남김)
         log.info("정산 불가능 금액 = {}", impossibleAmount);
 
         // 정산 필요 금액 = 총합 - 정산 불가능 금액
@@ -219,5 +219,10 @@ public class SettlementService {
     // 특정 정산 조회
     public List<ExpenseResult> getSettlementExpenses(Long settlementId) {
         return expenseRepository.findExpensesWithMemberBySettlementId(settlementId);
+    }
+
+    // TODO 특정 정산 삭제 기능 구현(정산 ID 전체 삭제 + 부분 멤버 정산 삭제)
+    public void deleteSettlement(Long settlementId, Long memberId) {
+
     }
 }

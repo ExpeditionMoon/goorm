@@ -15,5 +15,6 @@ import java.util.List;
 public class Settlement {
     private Long id;
     private String name;
+    @Builder.Default
     private List<Member> participants = Collections.emptyList();
 }

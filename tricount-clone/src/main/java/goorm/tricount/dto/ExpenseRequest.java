@@ -1,5 +1,6 @@
 package goorm.tricount.dto;
 
+import goorm.tricount.model.Member;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 

@@ -5,7 +5,6 @@ import goorm.tricount.dto.ExpenseResult;
 import goorm.tricount.dto.SettlementRequest;
 import goorm.tricount.model.ApiResponse;
 import goorm.tricount.model.Settlement;
-import goorm.tricount.service.ExpenseService;
 import goorm.tricount.service.SettlementService;
 import goorm.tricount.util.MemberContext;
 import jakarta.validation.Valid;

@@ -38,7 +38,7 @@ public class SettlementRepositoryImpl implements SettlementRepository{
     // 정산 참가자(중간 테이블) 추가
     @Override
     public void addParticipantToSettlement(Long settlementId, Long memberId) {
-        jdbcTemplate.update("INSERT INTO settlement_participant (settlement_id, member_id) VALUES (?, ?)", settlementId, memberId);
+        jdbcTemplate.update("INSERT INTO settlement_participants (settlement_id, member_id) VALUES (?, ?)", settlementId, memberId);
     }
 
     // 특정 정산 조회(정산 + 정산 참가자 자세한 정보)
